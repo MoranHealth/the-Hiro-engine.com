@@ -1,0 +1,33 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.holding-page {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.holding-link {
+  display: block;
+  width: min(100%, 1100px);
+}
+
+.holding-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
