@@ -114,10 +114,17 @@
       <div class="profile-copy">
         <p class="eyebrow">Create your Hiro profile</p>
         <h2>Tell Hiro what your organisation is looking for.</h2>
-        <p>Your profile is the starting point for how Hiro scores the market around you. Complete the details below and your email application will open with the information ready to send to Moran Health.</p>
+        <p>Your profile is the starting point for how Hiro scores the market around you. Complete the details below and submit them directly to Moran Health without leaving the Hiro website.</p>
       </div>
 
       <form class="profile-form" id="hiro-profile-form">
+        <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
+          <label>
+            Leave this field blank
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+          </label>
+        </div>
+
         <div class="form-grid">
           <label>
             Name
@@ -133,7 +140,7 @@
           </label>
           <label>
             Website
-            <input type="url" name="website" autocomplete="url" placeholder="https://">
+            <input type="text" name="website" autocomplete="url" placeholder="e.g. www.example.com">
           </label>
           <label class="full-width">
             What do you sell?
@@ -164,9 +171,9 @@
         <div class="form-footer">
           <label class="consent-row">
             <input type="checkbox" name="privacy" required>
-            <span>I understand these details will be included in an email to Moran Health for the purpose of creating and discussing my Hiro profile.</span>
+            <span>I agree to Moran Health using these details to create and discuss my Hiro profile.</span>
           </label>
-          <p class="privacy-note">No form data is stored by this website. Your default email application will open before anything is sent. See Moran Health's <a href="https://www.moranhealth.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+          <p class="privacy-note">Your submission is processed by a third-party form delivery service and sent to Moran Health. See Moran Health's <a href="https://www.moranhealth.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
           <button class="button button-primary submit-button" type="submit">Submit my profile</button>
           <p class="form-status" id="form-status" aria-live="polite"></p>
         </div>
