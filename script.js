@@ -4,7 +4,10 @@
 
   if (!form) return;
 
-  form.addEventListener('submit', (event) => {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const endpoint = 'https://formsubmit.co/ajax/admin@moranhealth.com';
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     if (!form.checkValidity()) {
@@ -13,6 +16,14 @@
     }
 
     const data = new FormData(form);
+    const honeypot = String(data.get('_honey') || '').trim();
+
+    if (honeypot) {
+      form.reset();
+      status.textContent = 'Thanks. We’ve received your Hiro profile and will be in touch.';
+      return;
+    }
+
     const name = String(data.get('name') || '').trim();
     const organisation = String(data.get('organisation') || '').trim();
     const email = String(data.get('email') || '').trim();
@@ -24,32 +35,57 @@
     const buyers = String(data.get('buyers') || '').trim();
     const exclusions = String(data.get('exclusions') || '').trim();
 
-    const subject = `Hiro profile enquiry — ${organisation}`;
-    const body = [
-      'Hiro profile enquiry',
-      '',
-      `Name: ${name}`,
-      `Organisation: ${organisation}`,
-      `Work email: ${email}`,
-      `Website: ${website || 'Not provided'}`,
-      '',
-      'What we sell / capabilities:',
+    const payload = {
+      name,
+      organisation,
+      email,
+      website: website || 'Not provided',
       capabilities,
-      '',
-      `Sectors: ${sectors || 'Not provided'}`,
-      `Geographic markets: ${geography || 'Not provided'}`,
-      `Typical contract size: ${contractValue || 'Not provided'}`,
-      `Buyers of interest: ${buyers || 'Not provided'}`,
-      '',
-      'Exclusions:',
-      exclusions || 'None provided',
-      '',
-      'Please use these details to discuss and configure our Hiro profile.'
-    ].join('\n');
+      sectors: sectors || 'Not provided',
+      geography: geography || 'Not provided',
+      contractValue: contractValue || 'Not provided',
+      buyers: buyers || 'Not provided',
+      exclusions: exclusions || 'None provided',
+      _replyto: email,
+      _subject: `Hiro profile enquiry — ${organisation}`,
+      _template: 'table',
+      _captcha: 'false',
+      _url: window.location.href
+    };
 
-    const mailto = `mailto:admin@moranhealth.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const originalButtonText = submitButton ? submitButton.textContent : '';
 
-    status.textContent = 'Opening your email application with your Hiro profile details ready to send.';
-    window.location.href = mailto;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+    }
+
+    status.textContent = 'Sending your Hiro profile…';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Form delivery failed with status ${response.status}`);
+      }
+
+      form.reset();
+      status.textContent = 'Thanks. We’ve received your Hiro profile and will be in touch.';
+    } catch (error) {
+      console.error('Hiro profile submission failed', error);
+      status.textContent = 'We couldn’t send your profile. Please try again or contact admin@moranhealth.com.';
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText || 'Submit my profile';
+      }
+    }
   });
 })();
