@@ -3,24 +3,191 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Hiro Engine</title>
+  <meta name="description" content="Hiro is public-sector procurement intelligence that profiles, scores and prioritises the market around your organisation.">
+  <title>The Hiro Engine | Public-sector procurement intelligence</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page">
-    <video
-      class="holding-video"
-      autoplay
-      muted
-      playsinline
-      controls
-      preload="metadata"
-      poster="ComingSoonHiro.png"
-      aria-label="The Hiro Engine explainer video"
-    >
-      <source src="assets/hiro-homepage.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Hiro home">HIRO</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#plans">Plans</a>
+      <a class="nav-cta" href="#profile">Create your Hiro profile</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Hiro explainer">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        playsinline
+        controls
+        preload="metadata"
+        aria-label="The Hiro Engine explainer video"
+      >
+        <source src="assets/hiro-homepage.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <a class="scroll-cue" href="#intro" aria-label="Continue to Hiro overview">Explore Hiro</a>
+    </section>
+
+    <section class="section intro" id="intro">
+      <p class="eyebrow">Public-sector procurement intelligence</p>
+      <h1>The public sector market, scored around you.</h1>
+      <p class="lead">Hiro brings fragmented public procurement intelligence together, then scores and prioritises it around your organisation, your capabilities and your priorities.</p>
+      <p class="journey">Profile. Score. Prioritise. Win more.</p>
+      <div class="button-row">
+        <a class="button button-primary" href="#profile">Create your Hiro profile</a>
+        <a class="button button-secondary" href="#how-it-works">Explore how Hiro works</a>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="section-heading">
+        <p class="eyebrow">How Hiro works</p>
+        <h2>From the wider market to the opportunities that matter.</h2>
+        <p>Hiro is not a tender-alert service. It structures the market, scores it around your organisation and helps focus effort where it matters.</p>
+      </div>
+
+      <div class="levels-grid">
+        <article class="level-card">
+          <div class="level-number">L0</div>
+          <h3>Data</h3>
+          <p class="level-tagline">Structure. Standardise. Enrich.</p>
+          <p>Downloadable, CRM-ready procurement intelligence built from fragmented public-sector sources and normalised into a consistent market view.</p>
+        </article>
+
+        <article class="level-card">
+          <div class="level-number">L1</div>
+          <h3>Profile</h3>
+          <p class="level-tagline">You create the profile. Hiro scores the market.</p>
+          <p>Profiles can reflect services, sectors, buyers, geography, exclusions and value. Hiro scores opportunities against that context so the market is organised around you.</p>
+        </article>
+
+        <article class="level-card">
+          <div class="level-number">L2</div>
+          <h3>Advanced Intelligence</h3>
+          <p class="level-tagline">Fit. Confidence. Risk. Rationale.</p>
+          <p>AI-assisted decision intelligence supports Pursue, Watch or Decline choices. It is decision support, not autopilot.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section plans-section" id="plans">
+      <div class="section-heading">
+        <p class="eyebrow">Choose the level that fits</p>
+        <h2>Procurement intelligence that grows with you.</h2>
+        <p>Monthly pricing shown includes VAT.</p>
+      </div>
+
+      <div class="plans-grid">
+        <article class="plan-card">
+          <p class="plan-level">Level 0</p>
+          <h3>Data</h3>
+          <p class="price">£249<span>/month</span></p>
+          <p>Structured, standardised and enriched procurement data for teams that want a cleaner market dataset to work with.</p>
+          <a class="text-link" href="#profile">Start with your profile</a>
+        </article>
+
+        <article class="plan-card featured">
+          <p class="plan-level">Level 1</p>
+          <h3>Profile</h3>
+          <p class="price">£499<span>/month</span></p>
+          <p>Profile-based matching and scoring so you can see where your organisation fits across the public-sector market.</p>
+          <a class="button button-primary" href="#profile">Create your Hiro profile</a>
+        </article>
+
+        <article class="plan-card">
+          <p class="plan-level">Level 2</p>
+          <h3>Advanced Intelligence</h3>
+          <p class="price">£799<span>/month</span></p>
+          <p>AI-assisted fit, confidence, risk and rationale to support more consistent pursuit decisions.</p>
+          <a class="text-link" href="#profile">Start with your profile</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section profile-section" id="profile">
+      <div class="profile-copy">
+        <p class="eyebrow">Create your Hiro profile</p>
+        <h2>Tell Hiro what your organisation is looking for.</h2>
+        <p>Your profile is the starting point for how Hiro scores the market around you. Complete the details below and your email application will open with the information ready to send to Moran Health.</p>
+      </div>
+
+      <form class="profile-form" id="hiro-profile-form">
+        <div class="form-grid">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Organisation
+            <input type="text" name="organisation" autocomplete="organization" required>
+          </label>
+          <label>
+            Work email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            Website
+            <input type="url" name="website" autocomplete="url" placeholder="https://">
+          </label>
+          <label class="full-width">
+            What do you sell?
+            <textarea name="capabilities" rows="4" required placeholder="Services, products, capabilities and the types of work you want Hiro to find."></textarea>
+          </label>
+          <label>
+            Sectors you work in
+            <input type="text" name="sectors" placeholder="e.g. health, digital, construction">
+          </label>
+          <label>
+            Geographic markets
+            <input type="text" name="geography" placeholder="e.g. UK, Scotland, EU">
+          </label>
+          <label>
+            Typical contract size
+            <input type="text" name="contractValue" placeholder="e.g. £100k–£2m">
+          </label>
+          <label>
+            Buyers of interest
+            <input type="text" name="buyers" placeholder="Optional">
+          </label>
+          <label class="full-width">
+            Anything Hiro should exclude?
+            <textarea name="exclusions" rows="3" placeholder="Opportunity types, geographies, sectors, buyers or values that are not relevant."></textarea>
+          </label>
+        </div>
+
+        <div class="form-footer">
+          <label class="consent-row">
+            <input type="checkbox" name="privacy" required>
+            <span>I understand these details will be included in an email to Moran Health for the purpose of creating and discussing my Hiro profile.</span>
+          </label>
+          <p class="privacy-note">No form data is stored by this website. Your default email application will open before anything is sent. See Moran Health's <a href="https://www.moranhealth.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+          <button class="button button-primary submit-button" type="submit">Submit my profile</button>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="section final-cta">
+      <p class="eyebrow">Focus effort where it matters</p>
+      <h2>Build your view of the public-sector market around your organisation.</h2>
+      <a class="button button-primary" href="#profile">Create your Hiro profile</a>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>Hiro Engine by Moran Health Consulting Ltd.</p>
+    <div>
+      <a href="https://www.moranhealth.com/privacy-policy" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:admin@moranhealth.com">Contact</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
